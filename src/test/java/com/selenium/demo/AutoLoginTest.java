@@ -56,7 +56,6 @@ public class AutoLoginTest {
         TypeReference typeReference = new TypeReference<List<HashMap<String, Object>>>(){};
         List<HashMap<String,Object>> cookies = mapper.readValue(new File("cookies.yaml"), typeReference);
         System.out.print(cookies);
-
         cookies.forEach(cookieMap-> driver.manage().addCookie(new Cookie(cookieMap.get("name").toString(),cookieMap.get("value").toString())));
         driver.navigate().refresh();
         Thread.sleep(15000);
